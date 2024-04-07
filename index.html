@@ -46,7 +46,7 @@
                         <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
                         </svg>
-                        <div class="cart-item-count"></div>
+                        <div class="cart-item-count hidden"></div>
                     </div>
                 </div>
             </div>
@@ -59,13 +59,13 @@
                 <svg class="w-7 h-7 fill-white" viewBox="-6 -6 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-close"><path d='M7.314 5.9l3.535-3.536A1 1 0 1 0 9.435.95L5.899 4.485 2.364.95A1 1 0 1 0 .95 2.364l3.535 3.535L.95 9.435a1 1 0 1 0 1.414 1.414l3.535-3.535 3.536 3.535a1 1 0 1 0 1.414-1.414L7.314 5.899z' /></svg>
             </div>
            <div class="flex flex-col h-full">
-                <div class="cart-count pb-2 font-semibold text-lg select-none"></div>
+                <div class="cart-count cart-hasitem pb-2 font-semibold text-lg select-none hidden"></div>
                 <ul class="cart-parent space-y-5 divide-y divide-gray-200 max-h-[calc(100vh-87px)] overflow-x-hidden overflow-y-auto mb-4"></ul>
                 <div class="cart-noitem mt-20 w-full grid justify-center">
                     <div>
                         <div class="flex justify-center">
-                            <svg class="w-6 h-6" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.40114 6.38957L1.9042 6.33435L2.40114 6.38957ZM1.62336 13.3896L2.1203 13.4448L1.62336 13.3896ZM13.3766 13.3896L12.8797 13.4448L13.3766 13.3896ZM12.5988 6.38957L13.0958 6.33435L12.5988 6.38957ZM1.9042 6.33435L1.12642 13.3344L2.1203 13.4448L2.89808 6.44478L1.9042 6.33435ZM2.61724 15H12.3827V14H2.61724V15ZM13.8735 13.3344L13.0958 6.33435L12.1019 6.44478L12.8797 13.4448L13.8735 13.3344ZM11.6049 5H3.39502V6H11.6049V5ZM13.0958 6.33435C13.0114 5.5747 12.3693 5 11.6049 5V6C11.8597 6 12.0737 6.19157 12.1019 6.44478L13.0958 6.33435ZM12.3827 15C13.2767 15 13.9723 14.2229 13.8735 13.3344L12.8797 13.4448C12.9126 13.741 12.6807 14 12.3827 14V15ZM1.12642 13.3344C1.02769 14.2229 1.72323 15 2.61724 15V14C2.31924 14 2.08739 13.741 2.1203 13.4448L1.12642 13.3344ZM2.89808 6.44478C2.92622 6.19157 3.14025 6 3.39502 6V5C2.6307 5 1.9886 5.5747 1.9042 6.33435L2.89808 6.44478ZM4.99998 4V3.5H3.99998V4H4.99998ZM9.99998 3.5V4H11V3.5H9.99998ZM7.49998 1C8.88069 1 9.99998 2.11929 9.99998 3.5H11C11 1.567 9.43298 0 7.49998 0V1ZM4.99998 3.5C4.99998 2.11929 6.11927 1 7.49998 1V0C5.56698 0 3.99998 1.567 3.99998 3.5H4.99998Z" fill="#000000"/>
+                            <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
                             </svg>
                         </div>
                         <div class="mt-4">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="check-out-wrapper p-5 bg-primary/20 mt-auto">
+                <div class="cart-hasitem check-out-wrapper p-5 bg-primary/20 mt-auto hidden">
                     <div class="">
                         <button class="block w-full p-2 bg-white rounded font-semibold text-lg" type="button">Checkout</button>
                     </div>

@@ -3,9 +3,9 @@ const API_URL = "https://fakestoreapi.com/products";
 let productsList = [];
 let cartList = [];
 
-(async() => {
+(async () => {
     productsList = await fetch(API_URL).then(res => productsList = res.json())
-    if(!productsList) return
+    if (!productsList) return
 
     renderCards();
     globalFunction();
@@ -16,9 +16,9 @@ const renderCards = () => {
     const cardParent = document.querySelector(".products-holder");
     let cardproduct = ''
     productsList.forEach(product => {
-        
-        cardproduct += 
-        `<div class="product-card h-full p-5 bg-white border-2 rounded border-gray-200 hover:border-primary">
+
+        cardproduct +=
+            `<div class="product-card h-full p-5 bg-white border-2 rounded border-gray-200 hover:border-primary">
             <div class="relative">
                 <img src=${product.image} class="product-image w-full object-contain h-60 select-none" alt="product-image" />
             </div>
@@ -33,12 +33,6 @@ const renderCards = () => {
                     <h5 class="text-base font-bold">${product.price} USD</h5>
                     <div>Rating: <span class="font-bold">${product.rating.rate}</span></div>
                 </div>
-                <div class="my-4">
-                    <p class="line-clamp-2 hidden">
-                        <span class="text-base font-semibold">Description:</span> 
-                        ${product.description}
-                    </p>
-                </div>
                 <div class="mt-6 flex justify-between items-center">
                     <div class="flex border border-gray-200">
                         <button class="qty-dec w-9 h-9 grid place-items-center bg-white" title="Quantity Decrease">
@@ -50,7 +44,7 @@ const renderCards = () => {
                         </button>
                     </div>
                     <div>
-                        <button data-productid="${product.id}" class="text-primary p-2 add-to-cart relative z-50" title="Add to cart" >
+                        <button data-productid="${product.id}" class="text-primary p-2 add-to-cart" title="Add to cart" >
                             <svg class="fill-primary"  xmlns="http://www.w3.org/2000/svg" 
                                 width="24" height="24" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve">
                                 <g>
@@ -71,65 +65,63 @@ const renderCards = () => {
     cardParent.innerHTML = cardproduct;
 }
 
-function globalFunction () {
+function globalFunction() {
     const decBtns = document.querySelectorAll(".qty-dec");
     const incBtns = document.querySelectorAll(".qty-inc");
     const cartBtns = document.querySelectorAll(".add-to-cart")
 
     decBtns.forEach(decBtn => {
-        decBtn.addEventListener("click", function(e) {
-            if(this.nextElementSibling.value > 1) {
+        decBtn.addEventListener("click", function (e) {
+            if (this.nextElementSibling.value > 1) {
                 this.nextElementSibling.stepDown()
             }
         })
     })
 
     incBtns.forEach(incBtn => {
-        incBtn.addEventListener("click", function(e) {
-            if(this.previousElementSibling.value >= 1) {
+        incBtn.addEventListener("click", function (e) {
+            if (this.previousElementSibling.value >= 1) {
                 this.previousElementSibling.stepUp()
             }
         })
     })
 
     cartBtns.forEach(cartBtn => {
-        cartBtn.addEventListener("click", function(e) {
+        cartBtn.addEventListener("click", function (e) {
             let currentItemId = this.getAttribute("data-productid");
             let cartItem = productsList.find((item) => {
                 return item.id == currentItemId
             })
             let itemQuantity = this.parentNode.parentNode.querySelector(".qty-nos").value
-            let cartUpdate = {...cartItem, quantity: itemQuantity}
-            cartList.push(cartUpdate)
-
-            if(cartList.length) {
+            let cartUpdate = { ...cartItem, quantity: itemQuantity }
+            checkIfItem(cartUpdate)
+            if (cartList.length) {
                 document.querySelector(".cart-noitem").classList.add("hidden")
+                document.querySelectorAll(".cart-hasitem").forEach(item => item.classList.remove("hidden"))
             }
-
             notchMessage(cartItem.title, true)
             cartQtyUpdate();
             this.parentNode.parentNode.querySelector(".qty-nos").value = 1;
         })
     })
 
-    document.querySelector(".mini-cart-icon").addEventListener("click", function(e) {
+    document.querySelector(".mini-cart-icon").addEventListener("click", function (e) {
         let cart_open = document.querySelector(".cart-container");
         cart_open.classList.replace("translate-x-[2000px]", "translate-x-0")
         cart_open.classList.add("bg-black/70");
+        document.body.classList.add("overflow-hidden")
     })
 
     document.querySelectorAll(".close-mini-cart").forEach(item => {
-        item.addEventListener("click", function(e) {
-            let cart_open = document.querySelector(".cart-container");
-            cart_open.classList.replace("translate-x-0", "translate-x-[2000px]")
-            cart_open.classList.remove("bg-black/70");
+        item.addEventListener("click", function (e) {
+            cartClose();
         })
     })
 
 }
 
 
-function notchMessage(cartItemTitle, type=true) {
+function notchMessage(cartItemTitle, type = true) {
     const msgDiv = document.createElement("div")
     msgDiv.classList.add("container", "mx-auto", "px-4", "md:px-6,", "lg:px-8")
     let msg = ""
@@ -150,16 +142,16 @@ function notchMessage(cartItemTitle, type=true) {
     autoRemoveNotchMsg(msgDiv);
 }
 
-function autoRemoveNotchMsg (msgDiv) {
+function autoRemoveNotchMsg(msgDiv) {
 
     setTimeout(() => {
         try {
             document.querySelector(".msgContainer").removeChild(msgDiv)
-        } catch {}
+        } catch { }
     }, 3000)
 
     document.querySelectorAll(".close-msg").forEach(item => {
-        item.addEventListener("click", function(e) {
+        item.addEventListener("click", function (e) {
             document.querySelector(".msgContainer").removeChild(this.offsetParent.querySelector(".container"))
         })
     })
@@ -167,25 +159,35 @@ function autoRemoveNotchMsg (msgDiv) {
 }
 
 function cartQtyUpdate() {
+    console.log(cartList.length)
+    cartDisplay();
+    if (!cartList.length) {
+        document.querySelector(".cart-noitem").classList.remove("hidden")
+        document.querySelector(".cart-noitem").classList.add("block")
+        document.querySelectorAll(".cart-hasitem").forEach(item => item.classList.add("hidden"))
+    }
     let qty = [];
     let itemCount = 0;
     cartList.forEach(item => {
         qty.push(parseInt(item.quantity));
     })
 
-    for(let i = 0; i < qty.length; i++) {
+    for (let i = 0; i < qty.length; i++) {
         itemCount += qty[i]
 
     }
 
-    if(itemCount >= 1) {
+    if (itemCount >= 1) {
+        document.querySelector(".cart-item-count").classList.remove("hidden")
         let count = `
             <div class="absolute w-5 h-5 bg-primary -top-1 -right-1 rounded-full text-white grid place-items-center text-xs">${itemCount}</div>
         `
         document.querySelector(".cart-item-count").innerHTML = count;
-
-        cartDisplay();
+    } else {
+        document.querySelector(".cart-item-count").classList.add("hidden")
     }
+
+
 }
 
 function cartDisplay() {
@@ -203,7 +205,7 @@ function cartDisplay() {
                     <div class="font-semibold mb-1">${product.title}</div>
                     <div class="flex justify-between items-center gap-5">
                         <div><span class="font-semibold">Quantity:</span> ${product.quantity}</div>
-                        <div class="delete-cart-item p-2" data-cart-itemid=${product.id}>
+                        <div class="delete-cart-item p-2 cursor-pointer" data-cart-itemid="${product.id}">
                             <svg class="w-5 h-5 fill-red" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z" fill="red"/></svg>
                         </div>
                     </div>
@@ -218,11 +220,53 @@ function cartDisplay() {
 }
 
 function checkCartdelete() {
-    let cart_dlt = document.querySelectorAll(".delete-cart-item");
-    
-    cart_dlt.forEach(item => {
-        item.addEventListener("click", function(e){
-            console.log(this)
+    document.querySelectorAll(".delete-cart-item").forEach(item => {
+        item.addEventListener("click", function (e) {
+            let filteredCart = cartList.filter(item => {
+                return item.id != parseInt(this.getAttribute("data-cart-itemid"));
+            })
+
+            cartList = [...filteredCart]
+
+            cartQtyUpdate();
+
         })
     })
 }
+
+function checkIfItem(checkItem) {
+    if (cartList.length) {
+        let val = cartList.find((value) => {
+            return checkItem.id === value.id;
+        });
+        if (val) {
+            val.quantity = parseInt(val.quantity) + parseInt(checkItem.quantity);
+        }
+        else {
+            cartList.push(checkItem);
+        }
+    }
+    else {
+        cartList.push(checkItem);
+    }
+}
+
+
+function cartClose() {
+    let cart_open = document.querySelector(".cart-container");
+    cart_open.classList.replace("translate-x-0", "translate-x-[2000px]")
+    cart_open.classList.remove("bg-black/70");
+    document.body.classList.remove("overflow-hidden")
+}
+
+document.querySelector(".cart-container").addEventListener("click", function(e) {
+    if(e.target === this) {
+        cartClose();
+    }
+})
+
+window.addEventListener("keydown", function(e) {
+    if(e.keyCode === 27 || e.key === 'Escape') {
+        cartClose();
+    }
+})
