@@ -673,6 +673,10 @@ input[type="number"] {
   z-index: 30;
 }
 
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -756,8 +760,16 @@ input[type="number"] {
   height: 2.25rem;
 }
 
+.h-\[calc\(100vh-112px\)\] {
+  height: calc(100vh - 112px);
+}
+
 .h-full {
   height: 100%;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .max-h-10 {
@@ -800,6 +812,10 @@ input[type="number"] {
   width: 100%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .min-w-\[75px\] {
   min-width: 75px;
 }
@@ -828,6 +844,16 @@ input[type="number"] {
 .translate-x-\[2000px\] {
   --tw-translate-x: 2000px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 .cursor-pointer {
@@ -933,6 +959,10 @@ input[type="number"] {
   border-width: 2px;
 }
 
+.border-8 {
+  border-width: 8px;
+}
+
 .border-l {
   border-left-width: 1px;
 }
@@ -944,6 +974,21 @@ input[type="number"] {
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-blue-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(29 78 216 / var(--tw-border-opacity));
+}
+
+.border-l-gray-200 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-r-gray-200 {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .bg-black\/70 {
@@ -1132,6 +1177,23 @@ input[type="number"] {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@font-face {
+  font-family: 'Open Sans';
+
+  src: url('./../fonts/OpenSans-Regular.woff2') format('woff2'),
+      url('./../fonts/OpenSans-Regular.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
+html, body {
+  font-family: 'Open Sans';
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -1283,6 +1345,10 @@ input[type="number"] {
 }
 
 @media (min-width: 640px) {
+  .sm\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1308,6 +1374,10 @@ input[type="number"] {
 }
 
 @media (min-width: 1024px) {
+  .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

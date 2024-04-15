@@ -159,7 +159,6 @@ function autoRemoveNotchMsg(msgDiv) {
 }
 
 function cartQtyUpdate() {
-    console.log(cartList.length)
     cartDisplay();
     if (!cartList.length) {
         document.querySelector(".cart-noitem").classList.remove("hidden")
@@ -225,6 +224,12 @@ function checkCartdelete() {
             let filteredCart = cartList.filter(item => {
                 return item.id != parseInt(this.getAttribute("data-cart-itemid"));
             })
+
+            let findDelet = cartList.find(item => {
+                return item.id === parseInt(this.getAttribute("data-cart-itemid"));
+            })
+
+            notchMessage(findDelet.title, false)
 
             cartList = [...filteredCart]
 
