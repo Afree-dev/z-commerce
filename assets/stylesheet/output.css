@@ -720,6 +720,10 @@ input[type="number"] {
   margin-top: auto;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -734,6 +738,10 @@ input[type="number"] {
 
 .hidden {
   display: none;
+}
+
+.h-12 {
+  height: 3rem;
 }
 
 .h-4 {
@@ -768,10 +776,6 @@ input[type="number"] {
   height: 100%;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .max-h-10 {
   max-height: 2.5rem;
 }
@@ -786,6 +790,10 @@ input[type="number"] {
 
 .min-h-\[75px\] {
   min-height: 75px;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .w-4 {
@@ -810,10 +818,6 @@ input[type="number"] {
 
 .w-full {
   width: 100%;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .min-w-\[75px\] {
@@ -963,6 +967,14 @@ input[type="number"] {
   border-width: 8px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
+.border-\[6px\] {
+  border-width: 6px;
+}
+
 .border-l {
   border-left-width: 1px;
 }
@@ -971,19 +983,23 @@ input[type="number"] {
   border-right-width: 1px;
 }
 
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-}
-
 .border-blue-700 {
   --tw-border-opacity: 1;
   border-color: rgb(29 78 216 / var(--tw-border-opacity));
 }
 
-.border-l-gray-200 {
+.border-gray-200 {
   --tw-border-opacity: 1;
-  border-left-color: rgb(229 231 235 / var(--tw-border-opacity));
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-\[\] {
+  border-color: ;
+}
+
+.border-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(91 95 151 / var(--tw-border-opacity));
 }
 
 .border-r-gray-200 {
@@ -1097,6 +1113,11 @@ input[type="number"] {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
