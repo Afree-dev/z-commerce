@@ -9,27 +9,27 @@
 </head>
 <body>
     <header class="sticky top-0 z-10 bg-white shadow-md">
-        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative">
             <div class="flex justify-between items-center p-4 gap-4">
                 <div class="store-logo basis-full md:basis-auto">
                     <a href="/index.html" title="Z-Commerce">
                         <img class="max-h-10 drop-shadow" src="./assets/image/favicon.png" alt="store-logo">
                     </a>
                 </div>
-                <nav>
-                    <div class="block md:hidden cursor-pointer">
+                <nav class="group">
+                    <div class="nav-btn block md:hidden cursor-pointer">
                         <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                         </svg>
                     </div>
-                    <ul class="hidden md:inline-flex space-x-6 font-medium">
-                        <li class="relative text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
+                    <ul class="nav-continer block md:inline-flex md:space-x-6 font-medium max-md:fixed max-md:w-screen left-0 max-md:bg-white top-0 z-0 max-md:-translate-y-full transition-all group-[.active]:translate-y-[72px]">
+                        <li class="relative max-md:p-2 max-md:text-center text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
                             <a href="/index.html">Womens</a>
                         </li>
-                        <li class="relative text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
+                        <li class="relative max-md:p-2 max-md:text-center text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
                             <a href="/index.html">Mens</a>
                         </li>
-                        <li class="relative text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
+                        <li class="relative max-md:p-2 max-md:text-center text-black hover:text-primary cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-700 before:absolute before:bg-primary before:origin-center before:h-[2px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-700 after:absolute after:bg-primary after:origin-center after:h-[2px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]">
                             <a href="/index.html">Electronics</a>
                         </li>
                     </ul>

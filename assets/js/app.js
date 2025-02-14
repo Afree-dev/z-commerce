@@ -265,13 +265,18 @@ function checkIfItem(checkItem) {
     }
 }
 
+(function(){
+    const isMobile = window.innerWidth <= 767;
+    if(!isMobile) return;
 
-function cartClose() {
-    let cart_open = document.querySelector(".cart-container");
-    cart_open.classList.replace("translate-x-0", "translate-x-[2000px]")
-    cart_open.classList.remove("bg-black/70");
-    document.body.classList.remove("overflow-hidden")
-}
+    const nav = document.querySelector("nav.group");
+    const navBtn = nav.querySelector(".nav-btn");
+    navBtn.addEventListener("click", function(){
+        nav.classList.toggle("active")
+    })
+
+})();
+
 
 document.querySelector(".cart-container").addEventListener("click", function(e) {
     if(e.target === this) {
